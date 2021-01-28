@@ -1,0 +1,76 @@
+{% extends 'passbase.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid bg-info p-2 text-center">\
+    <img src="{% static 'image/clarky.png' %}" width="150px">
+    <!-- <h3 style="margin-top: -42px;">Build. Test. Repeat.</h3> -->
+    <div>
+        <div class="regis-form">
+
+            <form class="form-regis" method="POST" class="">
+                {% csrf_token %}
+                <i class="fa fa-user" aria-hidden="true"
+                    style="background-color: white; width:45px; padding: 15px;"></i><input type="text" name="first"
+                    placeholder="your first name" required><br><br>
+                <i class="fa fa-user" aria-hidden="true"
+                    style="background-color: white; width:45px; padding: 15px;"></i><input type="text" name="last"
+                    placeholder="your last name" required><br><br>
+                <i class="fa fa-envelope" aria-hidden="true"
+                    style="background-color: white; width:45px;  padding: 15px;"></i><input type="email" name="email"
+                    placeholder="your email" required><br><br>
+                <i class="fa fa-key" aria-hidden="true"
+                    style="background-color: white; width:45px; padding: 15px;"></i><input type="password"
+                    name="password1" placeholder="choose a password" required><br><br>
+                <i class="fa fa-check" aria-hidden="true"
+                    style="background-color: white; width:45px; padding: 15px;"></i><input type="password"
+                    name="password2" placeholder="comfirm password" required><br><br>
+                <i class="fa fa-universal-access" aria-hidden="true"
+                    style="background-color: white; width:45px; padding: 15px;"></i><input type="password"
+                    name="accesscode" placeholder="accesscode" required><br><br>
+                <button type="submit" class="btn btn-success btn-sm"> Register </button><br><br>
+                <div class="d-inline">
+                    <button class="btn btn-dark btn-sm"><a href="{% url 'login' %}"> Authenticated? </a></button>
+                    <button class="btn btn-dark btn-sm"><a href="{% url 'register' %}"> Privacy Statement</a></button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="container bg-warning w-25">
+        {% if password_error %}
+        <h5 class="error m-2">{{password_error}}</h5>
+        {% endif %}
+
+        {% if error %}
+        <h5 class="error m-2">{{error}}</h5>
+        {% endif %}
+
+        {% if short_error %}
+        <h5 class="error m-2">{{short_error}}</h5>
+        {% endif %}
+
+        {% if user_error %}
+        <h5 class="error m-2">{{user_error}}</h5>
+
+        {% endif %}
+
+        {%for userr in userrss %}
+        <li>{{userr.username}}</li>
+        {% endfor %}
+
+        {% if access_error %}
+        <h5 class="error m-2">{{access_error}}</h5>
+        {% endif %}
+    </div>
+</div>
+
+<div class="container text-center bg-white shadow p-2 ml-2 mr-2">
+    <h5> When you register your userame will be generated here </h4>
+    {% if generatedusername %}
+    <h5>Your username is {{generatedusername}} you can now login with your username and password </h4>
+    <button class="btn btn-dark btn-sm"><a href="{% url 'login' %}"> Proceed </a></button>
+    {% endif %}
+</div>
+
+
+{% endblock %}

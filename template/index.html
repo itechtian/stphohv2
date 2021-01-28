@@ -1,0 +1,139 @@
+{% extends 'uibase.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid w-100">
+	<div class="container text-center">
+		<div class="d-flex">
+			<div class="card shadow w-100  m-2 pt-5">
+				{%if countvolunteer %}
+				<h1>{{count}}</h1>
+				{% else %}
+				<h1>0</h1>
+				{% endif %}
+				<h5>Volunteers recorded</h5>
+				<span class="bg-info p-2 shadow"><button data-bs-toggle="modal" data-bs-target="#exampleModal"
+						data-bs-whatever="@mdo" class="btn btn-dark btn-sm">+</button></span>
+			</div>
+			<div class="card shadow  w-100 m-2 pt-5">
+				{% if count %}
+				<h1>{{count}}</h1>
+				{% else %}
+				<h1>0</h1>
+				{% endif %}
+				<h5>Project history recorded</h5>
+				<span class="bg-info p-2 shadow"><button data-bs-toggle="modal" data-bs-target="#createfolder"
+						class="btn btn-dark btn-sm">+</button></span>
+			</div>
+			<div class="card shadow  w-100 m-2 pt-5">
+				{% if countprojecthistory %}
+				<h1>{{count}}</h1>
+				{% else %}
+				<h1>0</h1>
+				{% endif %}
+				<h5>Project folder created</h5>
+				<span class="bg-info p-2 shadow"><button data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+					class="btn btn-dark btn-sm">+</button></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Models popup -->
+
+<div class="modal fade" id="createfolder" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+	aria-hidden="true">
+	<div class="modal-dialog bg-white p-2 shadow">
+		<div class="container bg-white p-2 m-2">
+			<div class="modal-content">
+				<div class="modal-body">
+					<form class="form-group p-2" method="POST">
+						{% csrf_token %}
+						<h6>Creat Project Folder</h6>
+						<input type="text" name="foldername" class="form-control form-control-sm w-50"
+							placeholder="ex. stphoh2021 or hoh2021" required><br>
+						<button class="btn btn-dark btn-sm mt-2">Create</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+	aria-hidden="true">
+	<div class="modal-dialog bg-white p-2 shadow">
+		<div class="container mt-2">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h3 class="text-center text-info">Add Project</h3>
+					<form class="form-group py-2 px-2" method="POST">
+						{% csrf_token %}
+						<input class="form-control form-control-sm " type="text" name="projectname"
+							placeholder="project name" required autocomplete="off" autofocus>
+						<br><br>
+						<input class="form-control form-control-sm " type="date" name="projectdate" required>
+						<br>
+						{% if user.username == "stphoh81@admin" %}
+						<button class="btn btn-dark btn-md mt-2" type="submit">Save</button>
+						{% endif %}
+					</form>
+				</div>
+				{% if user.username != "stphoh81@admin" %}
+				<div class="text-center p-2">
+					<button class="btn btn-danger btn-sm mt-2">You are not allowed to save</button>
+					<h6>Only approved admin can use this webapp</h6>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="exampleModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+	aria-hidden="true">
+	<div class="modal-dialog bg-white p-2 shadow">
+		<div class="container mt-2">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h3 class="text-center text-info">Add Volunteers</h3>
+					<form class="form-group py-2 px-2" method="POST">
+						{% csrf_token %}
+						<input class="form-control form-control-sm w-50" type="text" name="first"
+							placeholder="Firstname" required autocomplete="off" autofocus><input
+							class="form-control form-control-sm w-50" type="text" name="last" placeholder="surname"
+							required, autocomplete="off"><br><br>
+
+						<input class="form-control form-control-sm" type="text" name="address"
+							placeholder="Where you live" required autocomplete="off"><br><br>
+
+						<input class="form-control form-control-sm" type="tel" name="phone" placeholder="phone number"
+							required autocomplete="off"><br><br>
+
+						<br>
+						<h4>We want to know why you Volunteered</h4>
+						<textarea class="form-control form-control-sm" type="text" name="address" ,
+							placeholder="reason for Joining" required, autocomplete="off"></textarea><br>
+
+						<textarea class="form-control form-control-sm" type="text" name="address" ,
+							placeholder="How would you help the organization grow" required,
+							autocomplete="off"></textarea><br>
+
+						{% if user.username == "stphoh81@admin" %}
+						<button class="btn btn-dark btn-md mt-2" type="submit">Save</button>
+						{% endif %}
+					</form>
+					{% if user.username != "stphoh81@admin" %}
+					<div class="">
+						<button class="btn btn-dark btn-sm mt-2">You are not allowed to save</button>
+						<h6>Only approved admin can use this webapp</h6>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--End model popup-->
+{% endblock %}

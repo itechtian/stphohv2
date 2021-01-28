@@ -1,0 +1,54 @@
+{% extends "uibase.html" %}
+{% block content %}
+
+<div class="container-fluid w-100">
+    <h2 class="text-center">Saint Peregrine Project Records</h2>
+    <div class="container bg-white p-2 m-2">
+        <form class="form-group p-2" method="POST">
+            {% csrf_token %}
+            <h6>Creat Project Folder</h6>
+            <input type="text" name="foldername" class="form-control form-control-sm w-50"
+                placeholder="ex. stphoh2021 or hoh2021" required><br>
+            <button class="btn btn-dark btn-sm mt-2">Create</button>
+        </form>
+    </div>
+    <div class="container text-center">
+        <div class="d-flex folder">
+            {% if folder %}
+            {% for folders in folder %}
+
+            <div class="card shadow w-25 desktop m-2 pt-5 p-4 ">
+                <h5>{{folders.name}}</h5>
+            
+                <span class="bg-info p-2 shadow"><a href="{{folders.id}}"><button
+                        class="btn btn-dark btn-sm">Open</button></a></span>
+               
+            </div>
+            <div class="card shadow w-100 md-4 mobile m-2 pt-5">
+                <h5>{{folders.name}}</h5>
+                <span class="bg-info p-2 shadow"><button onclick="openForm()"
+                        class="btn btn-dark btn-sm">Open</button></span>
+            </div>
+
+            {% endfor %}
+
+            {% else %}
+            <div class="container">
+                <h6>Nothing here</h6>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+
+<div class="left-form shadow bg-info" id="left">
+    <h3 class="p-3 m-2">This is the left form</h3>
+</div>
+
+
+
+
+
+{% endblock %}
