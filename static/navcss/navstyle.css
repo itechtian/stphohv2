@@ -77,10 +77,10 @@ body {
   background: none;
   color:white;
   text-align: center;
-  font-size: 1.9em;
+  font-size: 2.5em;
   padding-bottom: 1em;
   height: 3.5em;
-  width: 3.5em;
+  width: 3.8em;
   background-color: black;
   position: fixed;
   left: 50%;
@@ -149,24 +149,24 @@ in our case x=40deg so skew angle is 50deg
 items should be rotated by x, minus (sum of angles - 180)2s (for this demo) */
 
 .csstransforms .cn-wrapper li:first-child {
-  -webkit-transform: rotate(90deg) skew(0deg);
-  -ms-transform: rotate(90deg) skew(0deg);
-  -moz-transform: rotate(90deg) skew(0deg);
-  transform: rotate(90deg) skew(0deg);
+  -webkit-transform: rotate(-10deg) skew(50deg);
+  -ms-transform: rotate(-10deg) skew(50deg);
+  -moz-transform: rotate(-10deg) skew(50deg);
+  transform: rotate(-10deg) skew(50deg);
 }
 
 .csstransforms .cn-wrapper li:nth-child(2) {
-  -webkit-transform: rotate(180deg) skew(0deg);
-  -ms-transform: rotate(180deg) skew(0deg);
-  -moz-transform: rotate(180deg) skew(0deg);
-  transform: rotate(180deg) skew(0deg);
+  -webkit-transform: rotate(70deg) skew(50deg);
+  -ms-transform: rotate(70deg) skew(50deg);
+  -moz-transform: rotate(70deg) skew(50deg);
+  transform: rotate(70deg) skew(50deg);
 }
 
 .csstransforms .cn-wrapper li:nth-child(3) {
-  -webkit-transform: rotate(360deg) skew(0deg);
-  -ms-transform: rotate(360deg) skew(0deg);
-  -moz-transform: rotate(360deg) skew(0deg);
-  transform: rotate(360deg) skew(0deg)
+  -webkit-transform: rotate(150deg) skew(50deg);
+  -ms-transform: rotate(150deg) skew(50deg);
+  -moz-transform: rotate(150deg) skew(50deg);
+  transform: rotate(150deg) skew(50deg)
 }
 
 /* .csstransforms .cn-wrapper li:nth-child(4) {
@@ -180,8 +180,8 @@ items should be rotated by x, minus (sum of angles - 180)2s (for this demo) */
   -webkit-transform: rotate(150deg) skew(50deg);
   -ms-transform: rotate(150deg) skew(50deg);
   -moz-transform: rotate(150deg) skew(50deg);
-  transform: rotate(150deg) skew(50deg); */
-}
+  transform: rotate(150deg) skew(50deg);
+} */
 
 .csstransforms .cn-wrapper li:nth-child(odd) a {
   background-color: #ececec;
@@ -292,3 +292,5 @@ items should be rotated by x, minus (sum of angles - 180)2s (for this demo) */
     width: 3em;
   }
 }
+
+

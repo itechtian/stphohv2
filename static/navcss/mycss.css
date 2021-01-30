@@ -2,6 +2,11 @@ body{
 	font-size:16px;
 }
 
+@media(max-width:990px){
+	.home-info{
+		flex-wrap:wrap;
+	}
+}
 
 .inner-flex{
 	width:100%;

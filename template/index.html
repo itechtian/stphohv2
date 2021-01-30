@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block content %}
-Branch B
+<p class="ml-2 p-2 sticky" style="color:gray">Deployed from git Branch B</p>
 <div class="container-fluid w-100">
 	<div class="container text-center">
-		<div class="d-flex">
+		<div class="d-flex home-info">
 			<div class="card shadow w-100  m-2 pt-5">
 				{%if countvolunteer %}
 				<h1>{{count}}</h1>
@@ -27,8 +27,8 @@ Branch B
 						class="btn btn-dark btn-sm">+</button></span>
 			</div>
 			<div class="card shadow  w-100 m-2 pt-5">
-				{% if countprojecthistory %}
-				<h1>{{count}}</h1>
+				{% if countfiles %}
+				<h1>{{countfiles}}</h1>
 				{% else %}
 				<h1>0</h1>
 				{% endif %}
