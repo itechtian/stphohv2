@@ -3,37 +3,40 @@
 {% load static %}
 {% block content %}
 
-<div class="container-fluid bg-info p-2 text-center">
-    <img src="{% static 'image/clarky.png' %}" width="150px">
-    <h3 style="margin-top: -42px;">Build. Test. Repeat.</h3>
-    <div>
-        
-               
-            </div>
+<div class="container-fluid bg-info p-2 shadow">
+    <h3 class="text-center text-white p-3 m-3">Build. Test. Repeat.</h3>
 
+    <div class="container text-center w-100">
+        <form class="form-group p-3 m-2" method="POST">
+            {% csrf_token %}
+            <!-- <i class="fa fa-user" aria-hidden="true"
+                style="background-color: white; width:35px; padding: 12px;"></i> -->
+            <input type="text" name="username" autofocus autocomplete="off" class="form-control form-control-sm mb-2" placeholder="your username"
+                required>
+            <!-- <i class="fa fa-key" aria-hidden="true"
+                style="background-color: white; width:35px; padding: 12px;"></i> -->
+            <input type="password" name="password" class="form-control form-control-sm mb-2"
+                placeholder="Enter your password" required>
+            <button type="submit" class="btn btn-success btn-sm"> Log in </button>      
+        </form>
+        <div class="d-inline">
+            <a href="{% url 'register' %}"><button class="btn btn-dark btn-sm"> Get Authentication?</button> </a>
+            <a href="{% url 'register' %}"> <button class="btn btn-dark btn-sm">Forgot Password? </button></a>
         </div>
+    </div>
     
-    <div class="container bg-warning w-25">
+
+
+</div>
+
+<div class="container-fluid text-center">
+    <div class="text-danger  m-2">
         {% if not_user %}
-        <h6 class="p-2">{{not_user}}!</h6>
+        <h6 class="p-2 text-center">{{not_user}}!</h6>
         {% endif %}
     </div>
 </div>
 
-<div class="container text-center">
-<form class="form-group p-2 text-center" method="POST">
-    {% csrf_token %}
-    <!-- <i class="fa fa-user" aria-hidden="true"
-        style="background-color: white; width:35px; padding: 12px;"></i> -->
-    <input type="text" name="username"  class="form-control form-control-sm w-25 mb-2" placeholder="your username" required>
-    <!-- <i class="fa fa-key" aria-hidden="true"
-        style="background-color: white; width:35px; padding: 12px;"></i> -->
-    <input type="password" name="password"  class="form-control form-control-sm w-25 mb-2" placeholder="Enter your password" required>
-    <button type="submit" class="btn btn-success btn-sm"> Log in </button><br><br>
-    <div class="d-inline">
-    <button class="btn btn-dark btn-sm"><a href="{% url 'register' %}"> Get Authentication? </a></button>
-    <button class="btn btn-dark btn-sm"><a href="{% url 'register' %}"> Forgot Password? </a></button>
-</div>
-</form>
-</div>
+
+
 {% endblock %}
