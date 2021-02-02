@@ -2,10 +2,20 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
 from .models import ProjectYear, AllProject, Volunteer
 from django.db.models import Q
+from django.contrib.auth.models import User, auth 
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth import (
+    authenticate,
+    get_user_model,
+    login,
+    logout
+)
+    
+
 
 
 @login_required
-def searchfunc(request):
+def searchfunc(request): 
     if request.method == "POST":
         query = request.POST.get("q")
         result1 = ProjectYear.objects.filter(Q(name__contains=query))
@@ -15,6 +25,13 @@ def searchfunc(request):
     return render(request, "searchpage.html")
     
 
+@login_required
+def createProjectfunc(request):
+    if request.method == "POST":
+        names = request.POST.get("foldername")
+        foldername = ProjectYear(name= names)
+        foldername.save()
+        return redirect("/")
 
 @login_required
 def home(request):
@@ -47,14 +64,22 @@ def openfiles(request):
         return redirect("/openfiles")
     return render(request, 'openfiles.html', {"folder":folder})
 
+
+
 @login_required
-def deletefunc(request, id=id):
-    deletefunc = ProjectYear.objects.get(pk=id)
+def deletefunc(request,id=id):
+    deletefunct = ProjectYear.objects.get(pk=id)
     if request.method == "POST":
-        folder = request.POST.get("foldername")
-        deletefunc.delete()
-        return redirect("/openfiles")
-    return render(request, 'openfiles.html', {"deletefunc":deletefunc})
+        passworded = request.POST.get("password")
+        user =  User.objects.get(password=password)
+        check = check_password(passworded, user)
+        if check is True:
+            deletefunct.delete()
+            return redirect("/openfiles")
+        return HttpResponse("Wrong password")
+    return render(request, "delete.html", {"folder":deletefunct})
+       
+    
 
 
 @login_required
