@@ -17,28 +17,31 @@
             {% if folder %}
             {% for folders in folder %}
 
-            <div class="card shadow desktop m-2 w-25 p-2">
+            <div class="desktop m-2 w-25 p-2">
                 <div class="container-fluid text-left">
                     <a href="delete/{{folders.id}}"><i class="fas fa-trash text-danger" style="cursor: pointer;" ></i></a>
                 </div>
-                <h6>{{folders.name}}</h6>
-                <a href="{{folders.id}}"><button class="btn btn-dark btn-sm w-25 shadow">Open</button></a>
+                <img src="static/folder.svg">
+                <h6 class="text-info">{{folders.name}}</h6>
+                <a href="{{folders.id}}"><button class="btn btn-dark btn-sm w-25 shadow"><i class="fas fa-arrow-up"></i></button></a>
             </div>
 
 
-            <div class="card shadow m-2 mb-4 w-100 mobile p-2">
+            <div class="m-2 mb-4 w-100 mobile p-2">
                 <div class="container-fluid text-left">
                     <i class="fas fa-trash text-danger" style="cursor: pointer;" data-bs-toggle="modal"
                         data-bs-target="#createfolder"></i>
                 </div>
+                <img src="static/folder.svg">
                 <h6>{{folders.name}}</h6>
-                <a href="{{folders.id}}"><button class="btn btn-dark btn-sm w-25 shadow">Open</button></a>
+                <a href="{{folders.id}}"><button class="btn btn-dark btn-sm w-25 shadow"><i class="fas fa-arrow-up"></i></button></a>
             </div>
 
             {% endfor %}
 
             {% else %}
             <div class="container">
+                <img src="static/nothinghere.png">
                 <h6>Nothing here</h6>
             </div>
             {% endif %}

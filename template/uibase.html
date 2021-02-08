@@ -38,7 +38,7 @@ integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKm
     </div>
     <div class="container text-center p-3">
         {% if user %}
-        <h6>Good Morning | {{user.first_name}} {{user.last_name}} {{user.password}}</h6>
+        <h6>Good Morning | {{user.first_name}} {{user.last_name}}</h6>
         {% endif %}
         <div class="container-fluid desktop">
             <form class="form-group text-center"  method="post" action="{% url 'search' %}">
@@ -58,9 +58,12 @@ integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKm
     <p class="ml-2 p-2 sticky text-center" style="color:gray">Deployed from git Branch B</p>
 
    
+
     {% block content %}
 
     {% endblock %}
+
+
 
     <!-- <div class="container-fuild text-center m-1">
         <h4>STPHOH AdminSite</h4>

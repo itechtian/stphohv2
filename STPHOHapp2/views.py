@@ -8,7 +8,8 @@ from django.contrib.auth import (
     authenticate,
     get_user_model,
     login,
-    logout
+    logout,
+    
 )
     
 
@@ -71,8 +72,8 @@ def deletefunc(request,id=id):
     deletefunct = ProjectYear.objects.get(pk=id)
     if request.method == "POST":
         passworded = request.POST.get("password")
-        user =  User.objects.get(password=password)
-        check = check_password(passworded, user)
+        check = check_password(passworded,encoded)
+        
         if check is True:
             deletefunct.delete()
             return redirect("/openfiles")

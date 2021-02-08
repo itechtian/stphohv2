@@ -3,7 +3,10 @@
 
 {% block content %}
 <div class="container-fluid">
-	<div class="container text-center">
+	<div class="container mobile p-3 m-1 text-center">
+		<img src="static/random1.png" width="140px">
+	</div>
+	<div class="container text-center  py-5 px-5">
 		<div class="d-flex home-info">
 			<div class="card shadow w-100 p-2 m-2">
 				{%if countvolunteer %}
@@ -37,6 +40,9 @@
 			</div>
 		</div>
 	</div>
+	<div class="container desktop text-center">
+		<img src="static/random1.png" width="340px">
+	</div>
 </div>
 
 <!--Models popup -->
@@ -54,6 +60,12 @@
 		</form>
 
 	</div>
+	{% if user.username != "stphoh81@admin" %}
+	<div class="text-center p-2">
+		<button class="btn btn-danger btn-sm mt-2">You are not allowed to save</button>
+		<h6>Only approved admin can use this webapp</h6>
+	</div>
+	{% endif %}
 </div>
 
 <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
@@ -107,14 +119,14 @@
 						<button class="btn btn-dark btn-md mt-2" type="submit">Save</button>
 						{% endif %}
 					</form>
-					{% if user.username != "stphoh81@admin" %}
-					<div class="">
-						<button class="btn btn-dark btn-sm mt-2">You are not allowed to save</button>
+			
+	</div>
+	{% if user.username != "stphoh81@admin" %}
+					<div class="text-center p-2">
+						<button class="btn btn-danger btn-sm mt-2">You are not allowed to save</button>
 						<h6>Only approved admin can use this webapp</h6>
 					</div>
 					{% endif %}
-			
-	</div>
 </div>
 <!--End model popup-->
 {% endblock %}

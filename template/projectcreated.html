@@ -6,9 +6,13 @@
 <div class="container static text-center"><b>{{result.name}}</b> Folder</div><hr><br>
 
 <div class="container text-center">
-   <h2> Nothing here! ! </h2><br><br>
-    <span class="bg-info p-2 shadow"><button data-bs-toggle="modal" data-bs-target="#createfolder"
-        class="btn btn-dark btn-sm">+</button></span>
+    <img src="static/nothinghere.png">
+   <h6> Nothing here! ! </h6><br><br>
+   <a href="/openfiles"> <button class="btn btn-success btn-sm shadow"><i class="fas fa-arrow-left"></i></button></a>
+   <button data-bs-toggle="modal" data-bs-target="#createfolder"
+        class="btn btn-dark btn-sm shadow"><i class="fas fa-folder-open"></i></button>
+        <a href="/delete/{{result.id}}"> <button class="btn btn-danger btn-sm shadow"><i class="fas fa-trash"></i></button></a>
+        
 </div>
 
 

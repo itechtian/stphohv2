@@ -5,21 +5,21 @@
 <div class="container text-center ">
     {% if result1 or result2 or result3 %}
     <h5 class="text-info text-center">Here is your result!!!</h5>
-    <div class="container d-flex m-2 p-3">
-        <div class="container shadow m-2 p-3">
+    <div class="container d-flex p-3">
+        <div class="container shadow p-3">
             <h6>Folders Results</h6>
             {% for i in result1 %}       
                 <h6 class="text-danger"> >>> <a href="{{i.id}}">{{i.name}}</a></h6>    
             {% endfor %}
         </div>
-        <div class="container shadow m-2 p-3">
+        <div class="container shadow  p-3">
             <h6>Projects Results</h6>
             {% for i in result2 %}
             <h6 class="text-danger"> {{i.projectname}}</h6>
             {% endfor %}
            
         </div>
-        <div class="container shadow m-2 p-3">
+        <div class="container shadow  p-3">
             <h6>Volunteers Results</h6>        
             {% for i in result3 %}       
             <h6 class="text-danger"> {{i.firstname}}</h6>                  
@@ -28,6 +28,7 @@
         </div>
     </div>
     {% else %}
+    <img src="static/no-search-results.svg">
     <h6>If your search is valid Result will show here!! </h6>
     <p>Make sure to check the spellings well</p>
     {% endif %}

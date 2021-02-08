@@ -4,6 +4,7 @@
 <div class="container text-center p-3">
 <h5>I see you want to delete <span class="text-danger">{{folder.name}}</span></h5>
 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#createfolder">Proceed</button>
+<a href="/openfiles"><button class="btn btn-sm btn-dark">Never mind</button></a>
 {% endif %}
 </div>
 <div class="modal fade" id="createfolder" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
@@ -15,7 +16,7 @@ aria-hidden="true">
                 <h6 class="danger">Danger Zone</h6>
                 <form method="POST" class="form-group">
                     {% csrf_token %}
-                    <input type="password" class="form-control form-control-sm" name="password">
+                    <input type="password" class="form-control form-control-sm" name="password" placeholder="Enter any secret stuff ex. mypassword" required><br><br>
                     <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                 </form>
             </div>
