@@ -69,7 +69,7 @@ def login_view(request):
          user = authenticate(username=username, password=password)
          if user is not None:
              login(request, user)
-             return redirect("/")
+             return redirect('/')
          not_user = "you are not authenticated"
          context = ({'not_user':not_user})
          return render(request, 'login.html', context)

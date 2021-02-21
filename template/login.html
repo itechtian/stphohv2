@@ -10,6 +10,9 @@
         {% if not_user %}
         <p class="text-center text-danger">{{not_user}}!</p>
         {% endif %}
+        {% if user %}
+        <p class="text-center text-danger">{{grant}}</p>
+        {% endif %}
         <form class="form-group py-3 px-2" method="POST">
             {% csrf_token %}
             <!-- <i class="fa fa-user" aria-hidden="true"
